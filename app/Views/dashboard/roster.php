@@ -26,6 +26,7 @@
                             <th>No</th>
                             <th>Nama File</th>
                             <th>File Document</th>
+                            <th>File Drive</th>
                             <th>Opsi</th>
                         </tr>
                     </thead>
@@ -34,6 +35,7 @@
                             <th>No</th>
                             <th>Nama File</th>
                             <th>File Document</th>
+                            <th>File Drive</th>
                             <th>Opsi</th>
                         </tr>
                     </tfoot>
@@ -44,6 +46,7 @@
                                 <td><?= $i++; ?></td>
                                 <td><?= $Allroster->name_file; ?></td>
                                 <td><a href="<?= base_url('uploads/file/excel') . '/' .  $Allroster->file_document; ?>" target="_blank" alt="File Document"><?= $Allroster->file_document; ?></a></td>
+                                <td><?= $Allroster->file_drive; ?></td>
                                 <td><a href="#" class="btn btn-warning btn-circle btn-sm">
                                         <i class="fas fa-eye"></i>
                                     </a>
@@ -84,6 +87,10 @@
                     <div class="form-body">
                         <div class="form-group">
                             <input name="name_file" placeholder="Name File" class="form-control form-control-user" type="text">
+                            <span class="help-block text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <textarea type="text" name="file_drive" id="file_drive" placeholder="Link Gdocs" class="form-control form-control-user"></textarea>
                             <span class="help-block text-danger"></span>
                         </div>
                         <div class="input-group">
@@ -151,6 +158,7 @@
 
                 $('[name="id_roster"]').val(data.id_roster);
                 $('[name="name_file"]').val(data.name_file);
+                $('[name="file_drive"]').val(data.file_drive);
 
                 $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
                 $('.modal-title').text('Edit roster'); // Set title to Bootstrap modal title

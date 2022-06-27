@@ -19,7 +19,22 @@ class NewsModel extends Model
 
         if ($slug == false) {
             $builder->orderBy('id_news', 'DESC');
-            return $builder->get();
+            return $builder->get()->getResultArray();
+        }
+
+        return $this->where(['slug' => $slug])->first();
+    }
+
+    public function getNewsPopup($slug = false)
+    {
+
+        $db      = \Config\Database::connect();
+        $builder = $db->table('news');
+
+        if ($slug == false) {
+            $builder->orderBy('id_news', 'DESC');
+            $builder->limit(1);
+            return $builder->get()->getResultArray();
         }
 
         return $this->where(['slug' => $slug])->first();

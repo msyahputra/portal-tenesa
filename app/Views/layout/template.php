@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="<?= base_url('front_end/fontawesome/css/all.css'); ?>">
   <link rel="stylesheet" href="<?= base_url('front_end/css/style.css'); ?>">
   <link rel="stylesheet" href="<?= base_url('front_end/css/zoom.css'); ?>">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </head>
 
@@ -467,6 +468,16 @@
   <script src="<?= base_url('front_end/js/zoom.js'); ?>"></script>
 
   <script>
+    // $('.md-trigger').modal('show');\
+    $(".linkk").each(function(i) {
+      len = $(this).text().length;
+      if (len > 60) {
+        $(this).text($(this).text().substr(0, 60) + '...');
+      }
+    });
+
+    $('.md-trigger').trigger('click');
+
     $('.portfolio-menu ul li').click(function() {
       $('.portfolio-menu ul li').removeClass('active');
       $(this).addClass('active');

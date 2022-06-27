@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Models\KategoriModel;
 use App\Models\NewsModel;
 use App\Models\EventModel;
-
+use App\Models\RosterModel;
 
 class Home extends BaseController
 {
@@ -13,18 +13,22 @@ class Home extends BaseController
 	protected $newsModel;
 	protected $KategoriModel;
 	protected $eventModel;
+	protected $rosterModel;
 
 	public function __construct()
 	{
 		$this->newsModel = new NewsModel();
 		$this->KategoriModel = new KategoriModel();
 		$this->eventModel = new EventModel();
+		$this->rosterModel = new RosterModel();
 	}
 
 	public function index()
 	{
-		$news = $this->newsModel->findAll();
+		$news = $this->newsModel->getNews();
+		$newsPopUp = $this->newsModel->getNewsPopup();
 		$event = $this->eventModel->orderBy('id_event', 'DESC')->paginate(9, 'event');
+		$roster = $this->rosterModel->orderBy('id_roster', 'DESC')->paginate(4, 'roster');
 
 		// TENESA
 		$job = $this->KategoriModel->getJob();
@@ -53,12 +57,14 @@ class Home extends BaseController
 		$panduanS_All = $this->KategoriModel->getPsilusiAll();
 
 
-		// dd($perfomansi);
+		// d($newsPopUp);
 
 		$data = [
 			'title' => 'Home | TENESA',
 			'news' => $news,
+			'newsPopUp' => $newsPopUp,
 			'event' => $event,
+			'roster' => $roster,
 			// tenesa
 			'job' => $job,
 			'tenesaa' => $Tenesa,

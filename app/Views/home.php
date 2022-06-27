@@ -1,6 +1,7 @@
        <?= $this->extend('layout/template'); ?>
 
        <?= $this->section('content'); ?>
+       <a href="" class="md-trigger" data-toggle="modal" data-target=".bd-example-modal-xl" aria-hidden="true"></a>
 
        <!--       <img src="front_end/images/face.png" alt="Image" class="img-face" data-aos="fade"> -->
        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -151,7 +152,6 @@
        					<?php endforeach; ?>
        				</div>
        				<hr>
-
        			</div>
        		</div>
        	</div>
@@ -243,4 +243,49 @@
        		</div>
        	</div>
        </section>
+       <div class=" modal fade bd-example-modal-xl" tabindex="-999" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+       	<div class="modal-dialog modal-xl" style="margin-top:150px;">
+       		<div class="modal-content" style="background-color:#EBEBEB; padding:20px;">
+       			<div class="container">
+       				<!-- Modal Header -->
+       				<button type="button" class="close" data-dismiss="modal">&times;</button>
+
+       				<div class="trending-main mt-5">
+       					<div class="row">
+       						<div class="col-lg-8">
+       							<!-- Trending Top -->
+       							<div class="trending-top mb-30">
+       								<?php foreach ($newsPopUp as $AllnewsPopUp) : ?>
+       									<div class="trend-top-img">
+       										<img src="<?php echo base_url("uploads/image_berita/") . "/" . $AllnewsPopUp['image']; ?>" alt="">
+       										<div class="trend-top-cap">
+       											<span>Latest News</span>
+       											<h2 style=""><a href="/news/<?= $AllnewsPopUp['slug']; ?>"><?= $AllnewsPopUp['title']; ?></a></h2>
+       										</div>
+       									</div>
+       								<?php endforeach; ?>
+       							</div>
+       						</div>
+       						<!-- Riht content -->
+       						<div class="col-lg-4">
+       							<h1 class="" style="color:#000; margin-bottom:30px;">New Roster</h1>
+       							<?php foreach ($roster as $Allroster) : ?>
+       								<div class="trand-right-single d-flex" style="height:80px;">
+       									<div class="trand-right-img">
+       										<img src="<?php echo base_url("front_end/images/excel.jpg"); ?>" alt="">
+       									</div>
+       									<div class="trand-right-cap">
+       										<h4><a class="linkk" href="/roster/<?= $Allroster['slug']; ?>"><?= $Allroster['name_file']; ?></a></h4>
+       									</div>
+       									<a href="<?php echo base_url("uploads/file/excel") . "/" . $Allroster['file_document']; ?>"><i class="fa fa-download fa-lg" aria-hidden="true" style="margin-top:15px; margin-left:15px;"></i></a>
+       								</div>
+       							<?php endforeach; ?>
+       						</div>
+       					</div>
+       				</div>
+       			</div>
+       		</div>
+       	</div>
+       </div>
+       </div>
        <?= $this->endSection(''); ?>

@@ -25,9 +25,11 @@ class Roster_model extends Model
         if ($method == 'save') {
             $name_file = 'required[roster.name_file]';
             $file_document = 'uploaded[file_document]|max_size[file_document,2048]|ext_in[file_document,xlsx]';
+            $file_drive = 'required[roster.file_drive]';
         } else {
             $name_file = 'required';
             $file_document = 'uploaded[file_document]|max_size[file_document,2048]|ext_in[file_document,xlsx]';
+            $file_drive = 'required';
         }
 
         $rulesValidation = [
@@ -43,6 +45,12 @@ class Roster_model extends Model
                     'uploaded' => 'file document harus di isi',
                     'max_size' => 'Ukuran file document Max 2048 KB',
                     'ext_in' => 'Format file document Wajib .Excel',
+                ]
+            ],
+            'file_drive' => [
+                'rules' => $file_drive,
+                'errors' => [
+                    'required' => 'Link File harus diisi.'
                 ]
             ]
         ];

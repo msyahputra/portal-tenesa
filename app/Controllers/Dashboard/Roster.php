@@ -37,10 +37,12 @@ class Roster extends BaseController
         $pdf->move('uploads/file/excel/', $pdfName);
 
         $slug = url_title($this->request->getPost('name_file'), '-', true);
+        $file_drive = $this->request->getVar('file_drive');
         $data = array(
             'name_file' => $this->request->getPost('name_file'),
             'slug' => $slug,
-            'file_document' => $pdfName
+            'file_document' => $pdfName,
+            'file_drive' => $file_drive
         );
         $insert = $this->model->roster_add($data);
         echo json_encode(array("status" => TRUE));
@@ -78,10 +80,12 @@ class Roster extends BaseController
         }
 
         $slug = url_title($this->request->getVar('name_file'), '-', true);
+        $file_drive = $this->request->getVar('file_drive');
         $data = array(
             'name_file' => $this->request->getPost('name_file'),
             'slug' => $slug,
-            'file_document' => $pdfName
+            'file_document' => $pdfName,
+            'file_drive' => $file_drive
         );
 
         $this->model->roster_update(array('id_roster' => $this->request->getPost('id_roster')), $data);
@@ -119,6 +123,12 @@ class Roster extends BaseController
             if ($validation->hasError('file_document')) {
                 $data['inputerror'][] = 'file_document';
                 $data['error_string'][] = $validation->getError('file_document');
+                $data['status'] = FALSE;
+            }
+
+            if ($validation->hasError('file_drive')) {
+                $data['inputerror'][] = 'file_drive';
+                $data['error_string'][] = $validation->getError('file_drive');
                 $data['status'] = FALSE;
             }
 

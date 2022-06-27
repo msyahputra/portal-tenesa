@@ -115,7 +115,7 @@
                         <!-- <a class="collapse-item" href="/dashboard/pages/home-banner">Home - Banner</a> -->
                         <a class="collapse-item" href="/dashboard/pages/berita">Berita</a>
                         <a class="collapse-item" href="/dashboard/pages/event">Event</a>
-                        <!-- <a class="collapse-item" href="/dashboard/pages/roster">Roster</a>  -->
+                        <a class="collapse-item" href="/dashboard/pages/roster">Roster</a>
                         <!-- <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
                         <a class="collapse-item" href="404.html">404 Page</a>
