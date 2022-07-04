@@ -241,7 +241,7 @@
         <?php header('Content-type: application/json'); ?>
         //Ajax Load data from ajax
         $.ajax({
-            url: "<?php echo site_url('dashboard/productcategori/ajax_edit/') ?>/" + id,
+            url: "<?php echo site_url('Dashboard/ProductCategori/ajax_edit/') ?>/" + id,
             type: "GET",
             dataType: "JSON",
             success: function(data) {
@@ -287,9 +287,9 @@
     function save() {
 
         if (save_method == 'save') {
-            url = "<?php echo site_url('dashboard/productcategori/product_add') ?>";
+            url = "<?php echo site_url('Dashboard/ProductCategori/product_add') ?>";
         } else {
-            url = "<?php echo site_url('dashboard/productcategori/product_update') ?>";
+            url = "<?php echo site_url('Dashboard/ProductCategori/product_update') ?>";
             console.log(url);
         }
 
@@ -322,7 +322,7 @@
         if (confirm('Are you sure delete this data?')) {
             // ajax delete data from database
             $.ajax({
-                url: "<?php echo site_url('dashboard/productcategori/product_delete') ?>/" + id,
+                url: "<?php echo site_url('Dashboard/ProductCategori/product_delete') ?>/" + id,
                 type: "POST",
                 dataType: "JSON",
                 success: function(data) {

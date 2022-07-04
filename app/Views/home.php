@@ -275,7 +275,7 @@
        										<img src="<?php echo base_url("front_end/images/excel.jpg"); ?>" alt="">
        									</div>
        									<div class="trand-right-cap">
-       										<h4><a class="linkk" href="/roster/<?= $Allroster['slug']; ?>"><?= $Allroster['name_file']; ?></a></h4>
+       										<h4><a class="linkk" href="#"><?= $Allroster['name_file']; ?></a></h4>
        									</div>
        									<a href="<?php echo base_url("uploads/file/excel") . "/" . $Allroster['file_document']; ?>"><i class="fa fa-download fa-lg" aria-hidden="true" style="margin-top:15px; margin-left:15px;"></i></a>
        								</div>

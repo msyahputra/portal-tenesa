@@ -20,7 +20,13 @@
   <link rel="stylesheet" href="<?= base_url('front_end/fontawesome/css/all.css'); ?>">
   <link rel="stylesheet" href="<?= base_url('front_end/css/style.css'); ?>">
   <link rel="stylesheet" href="<?= base_url('front_end/css/zoom.css'); ?>">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <style>
+    .clearfix::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+  </style>
 
 </head>
 
@@ -57,19 +63,17 @@
                           <?php endforeach; ?>
                           <li class="list-mega dropdown">
                             <button class="dropdown1" style="margin-left: -40px;" onclick="myFunction()" href="#">Perfomansi Tenesa<span class="fa fa-caret-down right"></span></<button>
-                              <ul class="dropdown-content">
-                                <?php foreach ($perfomansi as $AllPerpomansi) : ?>
-                                  <li class="list-mega subcontent">
-                                    <a class="drop" href="#"><?= $AllPerpomansi['name_subproduct']; ?> <span class="fa fa-caret-down right"></span></a>
-                                    <ul class="dropdown-subcontent">
-                                      <?php foreach ($perpomansiAll as $AllSubPerpomansi) : ?>
-                                        <?php if ($AllPerpomansi['id_subproduct'] == $AllSubPerpomansi['id_subproduct']) { ?>
-                                          <li class="list-mega"><a class="drop" href="<?= base_url('tenesa/perfomansi-tenesa/' . "/" . $AllSubPerpomansi['name_subproduct'] . "/" . $AllSubPerpomansi['slug']); ?> "><?= $AllSubPerpomansi['title']; ?></a></li>
-                                        <?php } ?>
-                                      <?php endforeach; ?>
-                                    </ul>
-                                  </li>
-                                <?php endforeach; ?>
+                              <ul id="myDropdown" class="dropdown-content" style="margin-left: -10px;">
+                                <li class="list-mega"><a class="link-mega" href="https://bit.ly/PeriodicVoiceJuni2022" target="_blank">Monitoring Periodik Voice</a></li>
+                                <li class="list-mega"><a class="link-mega" href="https://bit.ly/PeriodicTier2Juni2022" target="_blank">Monitoring Periodik Tier 2</a></li>
+                                <li class="list-mega"><a class="link-mega" href="https://bit.ly/PeriodicDigitalJuni2022" target="_blank">Monitoring Periodik Digital</a></li>
+                                <li class="list-mega"><a class="link-mega" href="https://bit.ly/RealTimeJuni2022" target="_blank">Real Time QM Score</a></li>
+                                <li class="list-mega"><a class="link-mega" href="https://bit.ly/KualitasSuaraJuni2022" target="_blank">Report Kualitas Suara Agent WFH</a></li>
+                                <li class="list-mega"><a class="link-mega" href="https://bit.ly/CXJuni2022" target="_blank">Report CX</a></li>
+                                <li class="list-mega"><a class="link-mega" href="" targat="_blank">Achievement Periodik</a></li>
+                                <li class="list-mega"><a class="link-mega" href="https://bit.ly/MyShopVoiceJuni2022" target="_blank">Mystery Shop Voice</a></li>
+                                <li class="list-mega"><a class="link-mega" href="https://bit.ly/MyShopEmailJuni2022" target="_blank">Mystery Shop e-Mail</a></li>
+                                <li class="list-mega"><a class="link-mega" href="https://bit.ly/MyShopSocmedJuni2022" targat="_blank">Mystery Shop SocMed</a></li>
                               </ul>
                           </li>
                           <li class="list-mega dropdown">
@@ -83,16 +87,14 @@
                         </ul>
                       </div>
                       <div>
-                        <div class="row" style="margin-right:-80%; margin-top :40px;">
+                        <div class="row" style="margin-right:500px; margin-top :40px;">
                           <ul class="mega-links">
-                            <li class="list-mega"><a class="link-mega drop" href="https://10.194.71.151/pnp-test/" target="_blank">Test PNP</a></li>
-                          </ul>
-                          <?php if (session()->get('level') == 1) { ?>
-                            <ul class="mega-links">
+                            <li class="list-mega"><a class="link-mega drop" href="<?= base_url('roster'); ?>">Roster</a></li>
+                            <li class="list-mega"><a class="link-mega drop" href="http://10.194.58.251/pnp-test/index.php" target="_blank">Test PNP</a></li>
+                            <?php if (session()->get('level') == 1) { ?>
+
                               <li class="list-mega"><a class="link-mega drop" style="margin-top :-135px;" href="/dashboard">Dashboard Admin</a></li>
-                            </ul>
-                          <?php } ?>
-                          <ul class="mega-links">
+                            <?php } ?>
                             <li class="list-mega dropdown">
                               <button class="dropdown1 drop" onclick="myFunction()" href="#">Team Tenesa<span class="fa fa-caret-down"></span></<button>
                                 <ul id="myDropdown" class="dropdown-content">
@@ -102,7 +104,7 @@
                             </li>
                             <?php if (session()->get('level') == 1) { ?>
                               <li class="list-mega dropdown">
-                                <button class="dropdown1" style="margin-left: -40px;" onclick="myFunction()" href="#">MOM Improvement TENESA<span class="fa fa-caret-down right"></span></<button>
+                                <button class="dropdown1" style="margin-left: -40px; width: 500px;" onclick="myFunction()" href="#">MOM Improvement TENESA<span class="fa fa-caret-down"></span></<button>
                                   <ul id="myDropdown" class="dropdown-content">
                                     <?php foreach ($mom as $AllMom) : ?>
                                       <li class="list-mega"><a class="drop" href="<?= base_url('productknowledge/sop' . "/" . $AllMom['slug']); ?> "><?= $AllMom['title']; ?></a></li>
@@ -196,7 +198,7 @@
                       </div>
 
                       <div class="row">
-                        <ul class="mega-links" style="margin-bottom:30px;">
+                        <ul class="mega-links" style="margin-bottom:175px;">
                           <header>INDIHOME</header>
                           <?php foreach ($indihome as $AllIndihome) : ?>
                             <li class="list-mega"><a class="link-mega" href="<?= base_url('productknowledge/indihome' . "/" . $AllIndihome['slug']); ?> "><?= $AllIndihome['title']; ?></a></li>
@@ -211,10 +213,16 @@
                       </div>
 
                       <div class="row">
-                        <ul class="mega-links" style="margin-bottom:1480px;">
+                        <ul class="mega-links" style="margin-bottom:65px;">
                           <header>DATIN</header>
                           <?php foreach ($datin as $Alldatin) : ?>
                             <li class="list-mega"><a class="link-mega" href="<?= base_url('productknowledge/datin' . "/" . $Alldatin['slug']); ?> "><?= $Alldatin['title']; ?></a></li>
+                          <?php endforeach; ?>
+                        </ul>
+                        <ul class="mega-links" style="margin-bottom:1480px;">
+                          <header>Lain-lain</header>
+                          <?php foreach ($lain as $Alllain) : ?>
+                            <li class="list-mega"><a class="link-mega" href="<?= base_url('productknowledge/lain' . "/" . $Alllain['slug']); ?> "><?= $Alllain['title']; ?></a></li>
                           <?php endforeach; ?>
                         </ul>
                       </div>
@@ -285,15 +293,13 @@
                         <header>Link Aplikasi</header>
                         <ul class="mega-links">
                           <li class="list-mega"><a class="link-mega" href="http://nossa.telkom.co.id" target="_blank">Nossa</a></li>
-                          <!-- <li class="list-mega"><a class="link-mega" href="https://ibooster.telkom.co.id/" target="_blank">I-Booster</a></li> -->
-                          <!-- <li class="list-mega"><a class="link-mega" href="https://embassy.telkom.co.id/" target="_blank">Embassy</a></li> -->
+
                           <li class="list-mega"><a class="link-mega" href="https://acs-ibooster.telkom.co.id/index.php/login" target="_blank">ACS I-Booster</a></li>
                           <li class="list-mega"><a class="link-mega" href="http://10.60.165.60/index.php?idx=0" target="_blank">E-Payment</a></li>
-                          <!-- <li class="list-mega"><a class="link-mega" href="https://siskatools.telkom.co.id/" target="_blank">I-Siska</a></li> -->
                           <li class="list-mega"><a class="link-mega" href="http://ncxtools.telkom.co.id/login" target="_blank">NCX Tools</a></li>
-                          <li class="list-mega"><a class="link-mega" href="http://netcare1.telkom.co.id/" target="_blank">MRTG 1</a></li>
-                          <li class="list-mega"><a class="link-mega" href="http://netcare2.telkom.co.id/" targat="_blank">MRTG 2</a></li>
-                          <li class="list-mega"><a class="link-mega" href="http://netcare3.telkom.co.id/" target="_blank">MRTG 3</a></li>
+                          <li class="list-mega"><a class="link-mega" href=" http://10.62.8.132/" target="_blank">MRTG 1</a></li>
+                          <li class="list-mega"><a class="link-mega" href="http://10.62.8.135/" targat="_blank">MRTG 2</a></li>
+                          <li class="list-mega"><a class="link-mega" href="http://10.62.8.136/" target="_blank">MRTG 3</a></li>
                           <!-- </ul>
                       </div>
                       <div class="row">
@@ -302,35 +308,32 @@
                           <li class="list-mega"><a class="link-mega" href="https://crm.on5.co.id/td5cc/login" target="_blank">ON5</a></li>
                           <li class="list-mega"><a class="link-mega" href="http://10.194.176.95:3000/d/WallboardTDSCC/wallboard-tdscc-on5-new-ver?orgId=1&refresh=30s&var-Channel=2" target="_blank">Dashboard ON5</a></li>
                           <li class="list-mega"><a class="link-mega" href="https://on4.infomedia.co.id/oct_tdscc/" target="_blank">ON4</a></li>
-                          <li class="list-mega"><a class="link-mega" href="https://ebis.mysiis.io/#/" target="_blank">Mysiis</a></li>
-                          <li class="list-mega"><a class="link-mega" href="https://union.wifi.id/apose/" target="_blank">Apose</a></li>
-                          <li class="list-mega"><a class="link-mega" href="http://10.60.170.94/" target="_blank">TIBS</a></li>
-                          <!-- <li class="list-mega"><a class="link-mega" href="http://180.250.18.87/pertamina/application/view/index.php" target="_blank">Workforce SPBU</a></li> -->
-                          <!-- <li class="list-mega"><a class="link-mega" href="http://digispbu.telkom.co.id" target="_blank">Digi SPBU</a></li> -->
+                          <li class="list-mega"><a class="link-mega" href="http://10.60.175.132/ideas_new/" target="_blank">IDEAS</a></li>
+                          <li class="list-mega"><a class="link-mega" href="https://ott.upoint.co.id/subscriptions" target="_blank">Dashboard OTT Upoint</a></li>
+                          <li class="list-mega"><a class="link-mega" href="http://10.62.170.172/datek_center" target="_blank">Datek SBC</a></li>
+                          <li class="list-mega"><a class="link-mega" href="http://10.194.58.254/apps/tridys/" target="_blank">Tridys</a></li>
                         </ul>
                       </div>
                       <div class="row">
                         <ul class="mega-links" style="margin-top:30px;">
-                          <li class="list-mega"><a class="link-mega" href="http://10.60.175.132/ideas_new/" target="_blank">IDEAS</a></li>
-                          <li class="list-mega"><a class="link-mega" href="https://sdms.spbu.id/ " target="_blank">SDMS</a></li>
-                          <li class="list-mega"><a class="link-mega" href="https://telkom.center/" target="_blank">Telkom Center</a></li>
-                          <!-- <li class="list-mega"><a class="link-mega" href="https://edcspbu.pcsindonesia.co.id" target="_blank">EDC SPBU</a></li> -->
-                          <!-- <li class="list-mega"><a class="link-mega" href="https://merchant.linkaja.id/payment" target="_blank">Link Aja Payment SPBU</a></li> -->
                           <li class="list-mega"><a class="link-mega" href="https://telkomcare.telkom.co.id/" target="_blank">Telkom Care</a></li>
-                          <!-- <li class="list-mega"><a class="link-mega" href="https://ibooster.telkom.co.id/" target="_blank">I-Booster</a></li> -->
                           <li class="list-mega"><a class="link-mega" href="http://10.194.194.119/wallboard_c4/app/wallboard.php?lay=C4DC&slide=1" target="_blank">Wallboard Indihome</a></li>
                           <li class="list-mega"><a class="link-mega" href="http://10.194.194.119/wallboard_c4/app/wallboard.php?lay=C4DC&slide=3" target="_blank">Wallboard POTS</a></li>
                           <li class="list-mega"><a class="link-mega" href="http://10.194.194.119/wallboard_c4/app/wallboard.php?lay=C4DC&slide=2" target="_blank">Wallboard Datin</a></li>
                           <li class="list-mega"><a class="link-mega" href="http://10.194.194.119/wallboard_c4/app/wallboard.php?lay=C4%20IMES&slide=1" target="_blank">Wallboard IMES</a></li>
                           <li class="list-mega"><a class="link-mega" href="http://mycx.telkom.co.id" target="_blank">MyCx</a></li>
+                          <li class="list-mega"><a class="link-mega" href="http://10.60.170.94/" target="_blank">TIBS</a></li>
+                          <li class="list-mega"><a class="link-mega" href="https://telkom.center/" target="_blank">Telkom Center</a></li>
                           <!-- </ul>
                       </div>
                       <div class="row">
                         <ul class="mega-links" style="margin-top:30px;"> -->
                           <li class="list-mega"><a class="link-mega" href="http://10.194.194.119/wallboard_c4/app/wallboard.php?lay=C4DC&slide=4" target="_blank">Wallboard Global</a></li>
+                          <li class="list-mega"><a class="link-mega" href="https://sdms.spbu.id/" target="_blank">SDMS</a></li>
+                          <li class="list-mega"><a class="link-mega" href="https://ebis.mysiis.io/#/" target="_blank">Mysiis</a></li>
+                          <li class="list-mega"><a class="link-mega" href="https://union.wifi.id/apose/" target="_blank">APOSE</a></li>
                           <li class="list-mega"><a class="link-mega" href="https://monita.telkom.co.id/" target="_blank">Monita</a></li>
                           <li class="list-mega"><a class="link-mega" href="https://gladius.telkom.co.id/" target="_blank">Gladius</a></li>
-                          <li class="list-mega"><a class="link-mega" href="http://10.62.170.172/datek_center" target="_blank">Datek Center</a></li>
                         </ul>
                       </div>
                       <div class="row">
@@ -406,6 +409,10 @@
               <span class="icon-phone" style="color: #ff3c3c;"></span>
               <span class="text">0-800-1-835566</span>
             </div>
+            <div class="phone">
+              <span class="icon-whatsapp" style="color: #ff3c3c;"></span>
+              <span class="text">081283235566</span>
+            </div>
             <div class="email">
               <span class="icon-envelope" style="color: #ff3c3c;"></span>
               <span class="text">tenesa@telkom.co.id</span>
@@ -420,6 +427,10 @@
               <span class="icon-phone" style="color: #ff3c3c;"></span>
               <span class="text">0-800-1-835566</span>
             </div>
+            <div class="phone">
+              <span class="icon-whatsapp" style="color: #ff3c3c;"></span>
+              <span class="text">081283235566</span>
+            </div>
             <div class="email">
               <span class="icon-envelope" style="color: #ff3c3c;"></span>
               <span class="text">tenesa@telkom.co.id</span>
@@ -429,7 +440,7 @@
             <div>
               <h4 class="footer-title">Follow Me</h4>
               <a href="http://www.facebook.com/tenesatelkom" target="_blank" class="social-circle"><span class="icon-facebook" style="color: #ff3c3c;"></span></a>
-              <a href="#" class="social-circle"><span class="icon-instagram" style="color: #ff3c3c;"></span></a>
+              <a href="https://instagram.com/tenesasemarang?igshid=YmMyMTA2M2Y=" class="social-circle"><span class="icon-instagram" style="color: #ff3c3c;"></span></a>
               <a href="http://www.twitter.com/tenesa_telkom" target="_blank" class="social-circle"><span class="icon-twitter" style="color: #ff3c3c;"></span></a>
               <a href="mailto:tenesa@telkom.co.id" target="_blank" class="social-circle"><span class="icon-envelope" style="color: #ff3c3c;"></span></a>
             </div>
@@ -468,15 +479,36 @@
   <script src="<?= base_url('front_end/js/zoom.js'); ?>"></script>
 
   <script>
-    // $('.md-trigger').modal('show');\
-    $(".linkk").each(function(i) {
-      len = $(this).text().length;
-      if (len > 60) {
-        $(this).text($(this).text().substr(0, 60) + '...');
+    $(document).ready(function() {
+
+      load_data();
+
+      function load_data(query) {
+        $.ajax({
+          url: "<?php echo site_url('Roster/fetch') ?>",
+          method: "POST",
+          data: {
+            query: query
+          },
+          success: function(data) {
+            $('#result').html(data);
+          }
+        })
       }
+
+      $('#search_text').keyup(function() {
+        var search = $(this).val();
+        if (search != '') {
+          load_data(search);
+          console.log(load_data(search));
+        } else {
+          load_data();
+        }
+      });
+
     });
 
-    $('.md-trigger').trigger('click');
+    // $('.md-trigger').trigger('click');
 
     $('.portfolio-menu ul li').click(function() {
       $('.portfolio-menu ul li').removeClass('active');

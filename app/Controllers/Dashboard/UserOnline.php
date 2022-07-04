@@ -20,10 +20,16 @@ class UserOnline extends BaseController
         if (session()->get('level') <> 1) {
             return redirect()->to(base_url('dashboard'));
         }
+
+        // dd($data['get_user_online']);
+        return view('dashboard/user_online');
+    }
+
+    function get_users_online()
+    {
         helper(['form', 'url']);
         // $this->model = new Users_model();
-        $data['get_user_online'] = $this->model->get_user_online();
-        // dd($data['get_user_online']);
-        return view('dashboard/user_online', $data);
+        $data = $this->model->get_user_online();
+        echo json_encode($data);
     }
 }

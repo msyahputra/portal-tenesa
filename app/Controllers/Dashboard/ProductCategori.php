@@ -62,7 +62,7 @@ class ProductCategori extends BaseController
             'slug' => $slug,
             'description' => $this->request->getPost('description'),
             'file_document' => $pdfName,
-            'file_video' => $videoName
+            // 'file_video' => $videoName
         );
         $insert = $this->model->product_add($data);
         echo json_encode(array("status" => TRUE));

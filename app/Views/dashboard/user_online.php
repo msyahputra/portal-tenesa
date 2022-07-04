@@ -41,23 +41,8 @@
                             <th>Waktu Login</th>
                         </tr>
                     </tfoot>
-                    <tbody>
-                        <?php $i = 1; ?>
-                        <?php foreach ($get_user_online as $Allusers) : ?>
-                            <tr>
-                                <td><?= $i++; ?></td>
-                                <td><?= $Allusers['user_parner']; ?></td>
-                                <td><?= $Allusers['jabatan']; ?></td>
-                                <td><?= $Allusers['full_name']; ?></td>
-                                <td>
-                                    <?php if ($Allusers['status'] == "online") { ?>
-                                        <button type="button" class="btn btn-success btn-sm"><i class="fas fa-user"> Online</i></button>
-                                    <?php } ?>
-                                </td>
-                                <td><?= $Allusers['user_active']; ?></td>
-                            </tr>
-                        <?php endforeach; ?>
-                        </tr>
+                    <tbody class="show_users_online">
+
                     </tbody>
                 </table>
             </div>
@@ -72,6 +57,47 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('#table_id').DataTable();
+
+        // CALL FUNCTION SHOW PRODUCT
+        selesai();
+
+        function selesai() {
+            setTimeout(function() {
+                show_product();
+                selesai();
+            }, 200);
+        }
+        // FUNCTION SHOW PRODUCT
+        function show_product() {
+            $.ajax({
+                url: '<?php echo site_url("Dashboard/UserOnline/get_users_online"); ?>',
+                type: 'GET',
+                async: true,
+                dataType: 'json',
+                success: function(data) {
+                    var html = '';
+                    var count = 1;
+                    var i;
+                    for (i = 0; i < data.length; i++) {
+                        html += '<tr>' +
+                            '<td>' + count++ + '</td>' +
+                            '<td>' + data[i].user_parner + '</td>' +
+                            '<td>' + data[i].jabatan + '</td>' +
+                            '<td>' + data[i].full_name + '</td>' +
+                            '<td>' +
+                            '<?php if (' + data[i].status == "online" + ') { ?>' +
+                            '<button type="button" class="btn btn-success btn-sm"><i class="fas fa-user"> Online</i></button>' +
+                            '<?php } ?>' +
+                            '</td>' +
+                            '<td>' + data[i].user_active + '</td>' +
+                            '</tr>';
+                    }
+                    $('.show_users_online').html(html);
+                    console.log('data :' + data);
+                }
+
+            });
+        }
     });
 </script>
 <!-- /.container-fluid -->

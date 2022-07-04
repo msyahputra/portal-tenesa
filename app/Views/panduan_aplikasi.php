@@ -31,7 +31,7 @@
         <br>
         <?php if ($panduanaplikasi['file_video']) { ?>
             <div class="title">
-                <!-- <h6>Tutorial Video</h6> -->
+                <!--<h6>Tutorial Video</h6>-->
             </div>
             <div class="embed-responsive embed-responsive-16by9">
                 <iframe class="embed-responsive-item" src="<?= base_url('uploads/file/video' . "/" . $panduanaplikasi['file_video']); ?>" allowfullscreen></iframe>

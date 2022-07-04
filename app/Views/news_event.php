@@ -51,8 +51,22 @@
               </div>
               <hr>
               <?= $pager_event->links('event', 'event_paganation') ?>
+              <!-- <div class="container">
+                <h2 class="fh5co_heading fh5co_heading_border_bottom py-2 mb-4 text-right">Roster</h2>
+                <?php foreach ($roster as $AllRoster) : ?>
+                  <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      <img class="" src="<?= base_url('front_end/images/excel.jpg'); ?>" width="30" height="30" alt="">
+                      <p class="linkk" style="padding:10px; margin-top:10px;"><?= $AllRoster['name_file']; ?></p class="">
+                      <a class="" style="padding-right:5px;" href="<?= base_url('/roster/' . "/" . $AllRoster['slug']); ?>" class="file"><span class="icon-eye" style="color: red;"></span></a>
+                      <a class="" href="<?php echo base_url("uploads/file/excel") . "/" . $AllRoster['file_document']; ?>" class="file"><span style="color: red;" class="icon-download"></span></a>
+                    </li>
+                  </ul>
+                <?php endforeach; ?>
+              </div>
+              <hr>-->
             </div>
-
+            <hr>
           </div>
       </div>
     </div>

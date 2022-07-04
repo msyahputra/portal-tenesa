@@ -22,7 +22,7 @@
         <iframe class="embed-responsive-item" src="<?= $roster['file_drive']; ?>" width="1320" height="700" allow="autoplay"></iframe>
     </div>
     <div style="padding-top: 10px;">
-        <button><a href="/news">Kembali</a></button>
+        <button><a href="/home">Kembali</a></button>
         <button><a href="<?= base_url('uploads/file/excel/') . "/" . $roster['file_document']; ?>" class="file">Download</a></button>
     </div>
 </div>

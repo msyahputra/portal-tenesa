@@ -228,7 +228,7 @@
         <?php header('Content-type: application/json'); ?>
         //Ajax Load data from ajax
         $.ajax({
-            url: "<?php echo site_url('dashboard/berita/ajax_edit/') ?>/" + id,
+            url: "<?php echo site_url('Dashboard/Berita/ajax_edit/') ?>/" + id,
             type: "GET",
             dataType: "JSON",
             success: function(data) {
@@ -274,9 +274,9 @@
     function save() {
 
         if (save_method == 'save') {
-            url = "<?php echo site_url('dashboard/berita/news_add') ?>";
+            url = "<?php echo site_url('Dashboard/Berita/news_add') ?>";
         } else {
-            url = "<?php echo site_url('dashboard/berita/news_update') ?>";
+            url = "<?php echo site_url('Dashboard/Berita/news_update') ?>";
             console.log(url);
         }
 
@@ -309,7 +309,7 @@
         if (confirm('Are you sure delete this data?')) {
             // ajax delete data from database
             $.ajax({
-                url: "<?php echo site_url('dashboard/berita/news_delete') ?>/" + id,
+                url: "<?php echo site_url('Dashboard/Berita/news_delete') ?>/" + id,
                 type: "POST",
                 dataType: "JSON",
                 success: function(data) {

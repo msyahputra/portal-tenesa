@@ -13,12 +13,15 @@ class NewsAndEvent extends BaseController
     protected $newsModel;
     protected $KategoriModel;
     protected $eventModel;
+    protected $rosterModel;
+
 
     public function __construct()
     {
         $this->newsModel = new NewsModel();
         $this->KategoriModel = new KategoriModel();
         $this->eventModel = new EventModel();
+        $this->rosterModel = new RosterModel();
     }
 
     public function index()
@@ -37,6 +40,7 @@ class NewsAndEvent extends BaseController
             'telephony' => $this->KategoriModel->getTelephony(),
             'indihome' => $this->KategoriModel->getIndihome(),
             'wifiid' => $this->KategoriModel->getWifiid(),
+            'lain' => $this->KategoriModel->getLain(),
             'datin' => $this->KategoriModel->getDatin(),
             'imes' => $this->KategoriModel->getImes(),
             'interuksi' => $this->KategoriModel->getInteruksi(),
@@ -51,12 +55,14 @@ class NewsAndEvent extends BaseController
             'news' => $this->newsModel->orderBy('id_news', 'DESC')->paginate(3, 'news'),
             'pager_news' => $this->newsModel->pager,
             'event' => $this->eventModel->orderBy('id_event', 'DESC')->paginate(7, 'event'),
-            'pager_event' => $this->eventModel->pager
+            'roster' => $this->rosterModel->orderBy('id_roster', 'DESC')->paginate(3, 'roster'),
+            'pager_event' => $this->eventModel->pager,
+            'pager_roster' => $this->rosterModel->pager
             // 'currentPage' => $currentPage
         ];
 
         // $news_pager = $this->newsModel->paginate(3, 'news');
-        // dd($news_pager);
+        // d($data['pager_event']);
 
         return view('news_event', $data);
     }

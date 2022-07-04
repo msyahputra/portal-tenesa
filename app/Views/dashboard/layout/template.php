@@ -35,7 +35,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('dashboard'); ?>">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -47,7 +47,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="<?= base_url('dashboard'); ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -115,7 +115,7 @@
                         <!-- <a class="collapse-item" href="/dashboard/pages/home-banner">Home - Banner</a> -->
                         <a class="collapse-item" href="/dashboard/pages/berita">Berita</a>
                         <a class="collapse-item" href="/dashboard/pages/event">Event</a>
-                        <a class="collapse-item" href="/dashboard/pages/roster">Roster</a>
+                         <a class="collapse-item" href="/dashboard/pages/roster">Roster</a>  
                         <!-- <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
                         <a class="collapse-item" href="404.html">404 Page</a>

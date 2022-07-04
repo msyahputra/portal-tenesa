@@ -140,7 +140,7 @@ class KategoriModel extends Model
 
         return $this->where(['slug' => $slug])->first();
     }
-
+    
     // getWifi id
     public function getWifiid($slug = false)
     {
@@ -152,6 +152,24 @@ class KategoriModel extends Model
                 ->select('k.id_katprod, p.id_product, k.kategori_name, p.title, p.slug, p.description, p.file_document , p.file_video')
                 // ->groupBy('s.name_subproduct')
                 ->where('p.id_katprod = k.id_katprod and k.kategori_name="WIFI ID"')
+                ->get()->getResultArray();
+            return $this->findAll();
+        }
+
+        return $this->where(['slug' => $slug])->first();
+    }
+    
+    // lain-lainnya
+    public function getLain($slug = false)
+    {
+
+        if ($slug == false) {
+            return $this->db->table('product p')
+                ->join('kat_katprod k', 'k.id_katprod=p.id_katprod')
+                // ->join('sub_product s', 's.id_subproduct=p.id_subproduct')
+                ->select('k.id_katprod, p.id_product, k.kategori_name, p.title, p.slug, p.description, p.file_document , p.file_video')
+                // ->groupBy('s.name_subproduct')
+                ->where('p.id_katprod = k.id_katprod and k.kategori_name="Lainnya"')
                 ->get()->getResultArray();
             return $this->findAll();
         }
@@ -208,7 +226,7 @@ class KategoriModel extends Model
                 ->join('kat_katprod k', 'k.id_katprod=p.id_katprod')
                 ->join('sub_product s', 's.id_subproduct=p.id_subproduct')
                 ->select('k.id_katprod, s.id_subproduct, p.id_product, k.kategori_name, s.name_subproduct, p.title, p.slug, p.description, p.file_document , p.file_video')
-                ->where('p.id_katprod = k.id_katprod and s.status="7"')
+                ->where('p.id_katprod = k.id_katprod and s.status="7" ')
                 ->get()->getResultArray();
             return $this->findAll();
         }

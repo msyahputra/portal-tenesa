@@ -136,26 +136,26 @@ class Auth extends BaseController
             $password = md5($this->request->getPost('password'));
             $cek = $this->model->login($user_parner, $password);
 
-            if ($cek && $cek['level'] == 1) {
+            if ($cek && $cek['level'] == 2) {
                 // jika data di temukan
-                $myTime = new Time('Asia/Jakarta', 'WIB');
-                $data_login = array('id_user' => $cek['id_user'], 'status' => 'online', 'user_active' => $myTime);
-                $this->model->save_user_detail($data_login);
 
-                session()->set('log', true);
-                session()->set('full_name', $cek['full_name']);
-                session()->set('email', $cek['email']);
-                session()->set('user_parner', $cek['user_parner']);
-                session()->set('no_hp', $cek['no_hp']);
-                session()->set('level', $cek['level']);
-                session()->set('image', $cek['image']);
+                $myTime = Time::now('Asia/Jakarta', 'WIB');
+                $db = db_connect('default');
+                $builder = $db->table('users_detail');
 
-                return redirect()->to(base_url('/dashboard'));
-            } else if ($cek && $cek['level'] == 2) {
-                $myTime = new Time('Asia/Jakarta', 'WIB');
-                $data_login = array('id_user' => $cek['id_user'], 'status' => 'online', 'user_active' => $myTime);
-                $this->model->save_user_detail($data_login);
+                $new_time = date("Y-m-d H:i:s", strtotime('+8 hours'));
 
+                $data = [
+                    'id_user' => $cek['id_user'],
+                    'status'    => 'online',
+                    'user_active' => $myTime,
+                    'user_notactive' => $new_time
+                ];
+
+                $builder->insert($data);
+                // $db->insertID();
+
+                session()->set('id', $db->insertID());
                 session()->set('log', true);
                 session()->set('full_name', $cek['full_name']);
                 session()->set('email', $cek['email']);
@@ -165,6 +165,35 @@ class Auth extends BaseController
                 session()->set('image', $cek['image']);
 
                 return redirect()->to(base_url('/'));
+            } else if ($cek && $cek['level'] == 1) {
+
+                $myTime = Time::now('Asia/Jakarta', 'WIB');
+                $db = db_connect('default');
+                $builder = $db->table('users_detail');
+
+                $new_time = date("Y-m-d H:i:s", strtotime('+8 hours'));
+
+                $data = [
+                    'id_user' => $cek['id_user'],
+                    'status'    => 'online',
+                    'user_active' => $myTime,
+                    'user_notactive' => $new_time
+                ];
+
+                $builder->insert($data);
+                // $db->insertID();
+
+                session()->set('id', $db->insertID());
+                session()->set('log', true);
+                session()->set('full_name', $cek['full_name']);
+                session()->set('email', $cek['email']);
+                session()->set('user_parner', $cek['user_parner']);
+                session()->set('no_hp', $cek['no_hp']);
+                session()->set('level', $cek['level']);
+                session()->set('image', $cek['image']);
+
+                // dd($cek);
+                return redirect()->to(base_url('/dashboard/dashboard'));
             } else {
                 session()->setFlashdata('pesan', 'Login Gagal !!, ID Parner Atau Password Tidak Cocok !!!');
                 return redirect()->to(base_url('auth/login'));
@@ -178,11 +207,10 @@ class Auth extends BaseController
 
     public function logout()
     {
-        $myTime = new Time('Asia/Jakarta', 'WIB');
-        $id_user = session()->get('id_user');
+        $myTime = Time::now('Asia/Jakarta', 'WIB');
+        $id_user = session()->get('id');
         $data_login = array('status' => 'tidak_online', 'user_notactive' => $myTime);
         $this->model->update_user_detail($id_user, $data_login);
-
         session()->remove('log');
         session()->remove('full_name');
         session()->remove('user_parner');

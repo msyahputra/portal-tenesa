@@ -31,7 +31,7 @@
         <br>
         <?php if ($content['file_video']) { ?>
             <div class="title">
-                <!-- <h6>Tutorial Video</h6> -->
+                <h6>Tutorial Video</h6>
             </div>
             <div class="col-md-9 embed-responsive embed-responsive-16by9">
                 <iframe class="embed-responsive-item" src="<?= base_url('uploads/file/video' . "/" . $content['file_video']); ?>" allowfullscreen></iframe>

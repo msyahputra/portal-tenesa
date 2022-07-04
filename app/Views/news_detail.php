@@ -11,10 +11,12 @@
 
     <div class="content">
         <div class="title">
-            <h5 class="h5"> <img src="<?= base_url('front_end/images/clock.png'); ?>" width="20" height="20" alt="clock"> TENESA - <?= $news['tanggal']; ?></h5>
+            <h5 class="h5"> 
+            <img src="<?= base_url('front_end/images/clock.png'); ?>" width="20" height="20" alt="clock">
+            TENESA - <?= $news['tanggal']; ?></h5>
         </div>
         <div class="images-berita text-center">
-            <img class="img-fluid img-responsive" src="<?php echo base_url("uploads/image_berita/") . "/" . $news['image']; ?>" alt="">
+            <img class="img-thumbnail" src="<?php echo base_url("uploads/image_berita/") . "/" . $news['image']; ?>" alt="">
         </div>
         <br>
         <?php if ($news['file_document']) { ?>

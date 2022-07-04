@@ -38,6 +38,7 @@ class Event extends BaseController
             'telephony' => $this->KategoriModel->getTelephony(),
             'indihome' => $this->KategoriModel->getIndihome(),
             'wifiid' => $this->KategoriModel->getWifiid(),
+             'lain' => $this->KategoriModel->getLain(),
             'datin' => $this->KategoriModel->getDatin(),
             'imes' => $this->KategoriModel->getImes(),
             'interuksi' => $this->KategoriModel->getInteruksi(),

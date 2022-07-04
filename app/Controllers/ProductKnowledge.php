@@ -80,6 +80,10 @@ class productknowledge extends BaseController
     {
         return redirect()->route('/');
     }
+    public function lain()
+    {
+        return redirect()->route('/');
+    }
 
     public function detail_interuksi($slug)
     {
@@ -95,6 +99,7 @@ class productknowledge extends BaseController
             'telephony' => $this->KategoriModel->getTelephony(),
             'indihome' => $this->KategoriModel->getIndihome(),
             'wifiid' => $this->KategoriModel->getWifiid(),
+            'lain' => $this->KategoriModel->getLain(),
             'datin' => $this->KategoriModel->getDatin(),
             'imes' => $this->KategoriModel->getImes(),
             'interuksi' => $this->KategoriModel->getInteruksi(),
@@ -126,6 +131,7 @@ class productknowledge extends BaseController
             'telephony' => $this->KategoriModel->getTelephony(),
             'indihome' => $this->KategoriModel->getIndihome(),
             'wifiid' => $this->KategoriModel->getWifiid(),
+            'lain' => $this->KategoriModel->getLain(),
             'datin' => $this->KategoriModel->getDatin(),
             'imes' => $this->KategoriModel->getImes(),
             'interuksi' => $this->KategoriModel->getInteruksi(),
@@ -156,6 +162,7 @@ class productknowledge extends BaseController
             'telephony' => $this->KategoriModel->getTelephony(),
             'indihome' => $this->KategoriModel->getIndihome(),
             'wifiid' => $this->KategoriModel->getWifiid(),
+            'lain' => $this->KategoriModel->getLain(),
             'datin' => $this->KategoriModel->getDatin(),
             'imes' => $this->KategoriModel->getImes(),
             'interuksi' => $this->KategoriModel->getInteruksi(),
@@ -186,6 +193,7 @@ class productknowledge extends BaseController
             'telephony' => $this->KategoriModel->getTelephony(),
             'indihome' => $this->KategoriModel->getIndihome(),
             'wifiid' => $this->KategoriModel->getWifiid(),
+            'lain' => $this->KategoriModel->getLain(),
             'datin' => $this->KategoriModel->getDatin(),
             'imes' => $this->KategoriModel->getImes(),
             'interuksi' => $this->KategoriModel->getInteruksi(),
@@ -217,6 +225,7 @@ class productknowledge extends BaseController
             'telephony' => $this->KategoriModel->getTelephony(),
             'indihome' => $this->KategoriModel->getIndihome(),
             'wifiid' => $this->KategoriModel->getWifiid(),
+            'lain' => $this->KategoriModel->getLain(),
             'datin' => $this->KategoriModel->getDatin(),
             'imes' => $this->KategoriModel->getImes(),
             'interuksi' => $this->KategoriModel->getInteruksi(),
@@ -251,6 +260,7 @@ class productknowledge extends BaseController
             'telephony' => $this->KategoriModel->getTelephony(),
             'indihome' => $this->KategoriModel->getIndihome(),
             'wifiid' => $this->KategoriModel->getWifiid(),
+            'lain' => $this->KategoriModel->getLain(),
             'datin' => $this->KategoriModel->getDatin(),
             'imes' => $this->KategoriModel->getImes(),
             'interuksi' => $this->KategoriModel->getInteruksi(),
@@ -282,6 +292,7 @@ class productknowledge extends BaseController
             'telephony' => $this->KategoriModel->getTelephony(),
             'indihome' => $this->KategoriModel->getIndihome(),
             'wifiid' => $this->KategoriModel->getWifiid(),
+            'lain' => $this->KategoriModel->getLain(),
             'datin' => $this->KategoriModel->getDatin(),
             'imes' => $this->KategoriModel->getImes(),
             'interuksi' => $this->KategoriModel->getInteruksi(),
@@ -299,7 +310,7 @@ class productknowledge extends BaseController
         return view('product_content', $data);
     }
 
-    public function detail_wifiid($slug)
+     public function detail_wifiid($slug)
     {
 
         $data = [
@@ -313,6 +324,7 @@ class productknowledge extends BaseController
             'telephony' => $this->KategoriModel->getTelephony(),
             'indihome' => $this->KategoriModel->getIndihome(),
             'wifiid' => $this->KategoriModel->getWifiid(),
+            'lain' => $this->KategoriModel->getLain(),
             'datin' => $this->KategoriModel->getDatin(),
             'imes' => $this->KategoriModel->getImes(),
             'interuksi' => $this->KategoriModel->getInteruksi(),
@@ -330,7 +342,6 @@ class productknowledge extends BaseController
         return view('product_content', $data);
     }
 
-
     public function detail_datin($slug)
     {
 
@@ -345,6 +356,7 @@ class productknowledge extends BaseController
             'telephony' => $this->KategoriModel->getTelephony(),
             'indihome' => $this->KategoriModel->getIndihome(),
             'wifiid' => $this->KategoriModel->getWifiid(),
+            'lain' => $this->KategoriModel->getLain(),
             'datin' => $this->KategoriModel->getDatin(),
             'imes' => $this->KategoriModel->getImes(),
             'interuksi' => $this->KategoriModel->getInteruksi(),
@@ -377,7 +389,7 @@ class productknowledge extends BaseController
             'telephony' => $this->KategoriModel->getTelephony(),
             'indihome' => $this->KategoriModel->getIndihome(),
             'wifiid' => $this->KategoriModel->getWifiid(),
-            'wifiid' => $this->KategoriModel->getWifiid(),
+            'lain' => $this->KategoriModel->getLain(),
             'datin' => $this->KategoriModel->getDatin(),
             'imes' => $this->KategoriModel->getImes(),
             'interuksi' => $this->KategoriModel->getInteruksi(),
@@ -408,9 +420,9 @@ class productknowledge extends BaseController
             'mukadimah' => $this->KategoriModel->getMukadimah(),
             'telephony' => $this->KategoriModel->getTelephony(),
             'indihome' => $this->KategoriModel->getIndihome(),
-            'wifiid' => $this->KategoriModel->getWifiid(),
-            'wifiid' => $this->KategoriModel->getWifiid(),
             'datin' => $this->KategoriModel->getDatin(),
+            'wifiid' => $this->KategoriModel->getWifiid(),
+            'lain' => $this->KategoriModel->getLain(),
             'imes' => $this->KategoriModel->getImes(),
             'interuksi' => $this->KategoriModel->getInteruksi(),
             'sop' => $this->KategoriModel->getSop(),
@@ -441,7 +453,7 @@ class productknowledge extends BaseController
             'telephony' => $this->KategoriModel->getTelephony(),
             'indihome' => $this->KategoriModel->getIndihome(),
             'wifiid' => $this->KategoriModel->getWifiid(),
-            'wifiid' => $this->KategoriModel->getWifiid(),
+            'lain' => $this->KategoriModel->getLain(),
             'datin' => $this->KategoriModel->getDatin(),
             'imes' => $this->KategoriModel->getImes(),
             'interuksi' => $this->KategoriModel->getInteruksi(),
@@ -458,7 +470,7 @@ class productknowledge extends BaseController
         // dd($data);
         return view('product_content', $data);
     }
-
+    
     public function detail_imes($slug)
     {
 
@@ -473,7 +485,7 @@ class productknowledge extends BaseController
             'telephony' => $this->KategoriModel->getTelephony(),
             'indihome' => $this->KategoriModel->getIndihome(),
             'wifiid' => $this->KategoriModel->getWifiid(),
-            'wifiid' => $this->KategoriModel->getWifiid(),
+            'lain' => $this->KategoriModel->getLain(),
             'datin' => $this->KategoriModel->getDatin(),
             'imes' => $this->KategoriModel->getImes(),
             'interuksi' => $this->KategoriModel->getInteruksi(),
@@ -486,6 +498,39 @@ class productknowledge extends BaseController
             'panduanS_All' => $this->KategoriModel->getPsilusiAll(),
             'panduanaplikasii' => $this->KategoriModel->getPanduanAplikasi(),
             'content' => $this->KategoriModel->getImes($slug)
+        ];
+        // dd($data);
+        return view('product_content', $data);
+    }
+    
+    public function detail_lain($slug)
+    {
+
+        $data = [
+            'title' => 'Content Product | TENESA',
+            'tenesaa' => $this->KategoriModel->getTenesa(),
+            'job' => $this->KategoriModel->getJob(),
+            'mom' => $this->KategoriModel->getMom(),
+            'perfomansi' => $this->KategoriModel->getPerfomansi(),
+            'lain' => $this->KategoriModel->getLain(),
+            'mukadimah' => $this->KategoriModel->getMukadimah(),
+            'telephony' => $this->KategoriModel->getTelephony(),
+            'indihome' => $this->KategoriModel->getIndihome(),
+            'wifiid' => $this->KategoriModel->getWifiid(),
+            'wifiid' => $this->KategoriModel->getWifiid(),
+            'lain' => $this->KategoriModel->getLain(),
+            'datin' => $this->KategoriModel->getDatin(),
+            'imes' => $this->KategoriModel->getImes(),
+            'interuksi' => $this->KategoriModel->getInteruksi(),
+            'sop' => $this->KategoriModel->getSop(),
+            'standar' => $this->KategoriModel->getStandar(),
+            'form' => $this->KategoriModel->getForm(),
+            'fault_handling' => $this->KategoriModel->getFaultHandling(),
+            'fhandling_All' => $this->KategoriModel->getFHandlingAll(),
+            'panduan_solusi' => $this->KategoriModel->getPsolusi(),
+            'panduanS_All' => $this->KategoriModel->getPsilusiAll(),
+            'panduanaplikasii' => $this->KategoriModel->getPanduanAplikasi(),
+            'content' => $this->KategoriModel->getLain($slug)
         ];
         // dd($data);
         return view('product_content', $data);

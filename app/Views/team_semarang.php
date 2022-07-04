@@ -84,7 +84,7 @@
                 <img data-action="zoom" class="img-fluid" src="/uploads/image_smg/S13.jpg" alt="">
             </div>
             <div class="gallery gts col-lg-3 col-md-4 col-6 col-sm">
-                <img data-action="zoom" class="img-fluid" src="/uploads/image_smg/S14.png   " alt="">
+                <img data-action="zoom" class="img-fluid" src="/uploads/image_smg/S14.jpeg   " alt="">
             </div>
             <div class="gallery gts col-lg-3 col-md-4 col-6 col-sm">
                 <img data-action="zoom" class="img-fluid" src="/uploads/image_smg/S15.png" alt="">

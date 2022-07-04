@@ -25,4 +25,17 @@ class RosterModel extends Model
 
         return $this->where(['slug' => $slug])->first();
     }
+
+    public function fetch_data($query)
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('roster');
+
+        if ($query != '') {
+            $builder->like('name_file', $query);
+            $builder->orLike('file_document', $query);
+        }
+        $builder->orderBy('id_roster', 'DESC');
+        return $builder->get()->getResult();
+    }
 }

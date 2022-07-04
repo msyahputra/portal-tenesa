@@ -7,20 +7,20 @@ use App\Models\NewsModel;
 use App\Models\EventModel;
 use App\Models\RosterModel;
 
+
 class Home extends BaseController
 {
 
 	protected $newsModel;
 	protected $KategoriModel;
 	protected $eventModel;
-	protected $rosterModel;
 
 	public function __construct()
 	{
 		$this->newsModel = new NewsModel();
 		$this->KategoriModel = new KategoriModel();
 		$this->eventModel = new EventModel();
-		$this->rosterModel = new RosterModel();
+				$this->rosterModel = new RosterModel();
 	}
 
 	public function index()
@@ -42,6 +42,7 @@ class Home extends BaseController
 		$telephony = $this->KategoriModel->getTelephony();
 		$indihome = $this->KategoriModel->getIndiHome();
 		$wifiid = $this->KategoriModel->getWifiid();
+		$lain = $this->KategoriModel->getLain();
 		$datin = $this->KategoriModel->getDatin();
 		$imes = $this->KategoriModel->getImes();
 		$fault_handling = $this->KategoriModel->getFaultHandling();
@@ -57,7 +58,7 @@ class Home extends BaseController
 		$panduanS_All = $this->KategoriModel->getPsilusiAll();
 
 
-		// d($newsPopUp);
+		// dd($perfomansi);
 
 		$data = [
 			'title' => 'Home | TENESA',
@@ -77,6 +78,7 @@ class Home extends BaseController
 			'telephony' => $telephony,
 			'indihome' => $indihome,
 			'wifiid' => $wifiid,
+			'lain'=> $lain,
 			'datin' => $datin,
 			'imes' => $imes,
 			'fault_handling' => $fault_handling,

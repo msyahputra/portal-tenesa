@@ -24,8 +24,11 @@ class Pager extends BaseConfig
 		'default_full'   => 'CodeIgniter\Pager\Views\default_full',
 		'default_simple' => 'CodeIgniter\Pager\Views\default_simple',
 		'default_head'   => 'CodeIgniter\Pager\Views\default_head',
-		'news_paganation' => 'App\Views\pagers\news_paganation',
-		'event_paganation' => 'App\Views\pagers\event_paganation',
+		'news_paganation' => 'CodeIgniter\Pager\Views\news_paganation',
+		'event_paganation' => 'CodeIgniter\Pager\Views\event_paganation',
+		'roster_paganation' => 'CodeIgniter\Pager\Views\roster_paganation'
+		// 		'news_paganation' => 'App\Views\pagers\news_paganation',
+		// 		'event_paganation' => 'App\Views\pagers\event_paganation',
 	];
 
 	/**

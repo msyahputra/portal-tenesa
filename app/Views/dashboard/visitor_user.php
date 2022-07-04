@@ -9,9 +9,32 @@
     <!-- <a href="#" class="btn btn-danger btn-circle btn-lg" onclick="add_users()">
         <i class="fas fa-plus"></i>
     </a> -->
-
-    <br>
-    <br>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Cari Total Data Per Hari</h6>
+                </div>
+                <div class="card-body">
+                    <form action="" method="GET">
+                        <div class="form-group">
+                            <label for="tanggal">Tanggal</label>
+                            <input type="date" name="tanggal" class="form-control" placeholder="Cari tanggal ...">
+                        </div>
+                        <!-- <div class="form-group">
+                            <label for="bulan">Bulan</label>
+                            <input type="month" name="bulan" class="form-control" placeholder="Cari Bulan ...">
+                        </div> -->
+                        <!-- <div class="form-group">
+                            <label for="tahun">Tahun</label>
+                            <input type="number" min="1900" max="2099" step="1" name="tahun" class="form-control" placeholder="Cari Tahun ...">
+                        </div> -->
+                        <button type="submit" class="btn btn-primary">Cari</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">

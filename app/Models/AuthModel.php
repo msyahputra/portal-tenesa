@@ -17,19 +17,23 @@ class AuthModel extends Model
 
     public function login($user_parner, $password)
     {
-        return $this->db->table('users')->where([
-            'user_parner' => $user_parner,
-            'password' => $password
-        ])->get()->getRowArray();
+        return $this->db->table('users')
+            ->where([
+                'user_parner' => $user_parner,
+                'password' => $password
+            ])->get()->getRowArray();
     }
 
-    public function save_user_detail($data)
+    public function update_user_detail($id, $data)
     {
-        $this->db->table('users_detail')->insert($data);
+        return $this->db->table('users_detail')->where([
+            'id' => $id,
+            'status' => 'online'
+        ])->update($data);
     }
 
-    public function update_user_detail($where, $data)
-    {
-        $this->db->table('users_detail')->update($data, $where);
-    }
+    // public function update_user_detail($data, $where)
+    // {
+    //     $this->db->table('users_detail')->update($where, $data);
+    // }
 }

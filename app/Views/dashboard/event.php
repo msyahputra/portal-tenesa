@@ -56,7 +56,7 @@
                                             <span class="read-more-hide hide_content">Less <i class="fa fa-angle-up"></i></span> </span>
                                     <?php endif; ?>
                                 </td>
-                                <td><img src="<?= base_url('uploads/image_Event/') . '/' .  $Allevent->image; ?>" alt="Image Event" width="200"></td>
+                                <td><img src="<?= base_url('uploads/image_event/') . '/' .  $Allevent->image; ?>" alt="Image Event" width="200"></td>
                                 <td><a href="#" class="btn btn-warning btn-circle btn-sm">
                                         <i class="fas fa-eye"></i>
                                     </a>
@@ -204,7 +204,7 @@
         <?php header('Content-type: application/json'); ?>
         //Ajax Load data from ajax
         $.ajax({
-            url: "<?php echo site_url('dashboard/Event/ajax_edit/') ?>/" + id,
+            url: "<?php echo site_url('Dashboard/Event/ajax_edit/') ?>/" + id,
             type: "GET",
             dataType: "JSON",
             success: function(data) {
@@ -242,9 +242,9 @@
     function save() {
 
         if (save_method == 'save') {
-            url = "<?php echo site_url('dashboard/Event/event_add') ?>";
+            url = "<?php echo site_url('Dashboard/Event/event_add') ?>";
         } else {
-            url = "<?php echo site_url('dashboard/Event/event_update') ?>";
+            url = "<?php echo site_url('Dashboard/Event/event_update') ?>";
             console.log(url);
         }
 
@@ -277,7 +277,7 @@
         if (confirm('Are you sure delete this data?')) {
             // ajax delete data from database
             $.ajax({
-                url: "<?php echo site_url('dashboard/Event/event_delete') ?>/" + id,
+                url: "<?php echo site_url('Dashboard/Event/event_delete') ?>/" + id,
                 type: "POST",
                 dataType: "JSON",
                 success: function(data) {
