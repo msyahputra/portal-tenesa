@@ -209,41 +209,47 @@ class Users_model extends Model
 
     public function getTotaluserDayli($where)
     {
-        return $this->db->table('users_detail')
-            ->select('user_active, year(user_active) as tahun,month(user_active) as bulan, day(user_active) as day,count(*) as total_login')
-            ->where('user_active=', $where)
-            ->groupBy('user_active, year(user_active), month(user_active), day(user_active)')
-            ->orderBy('user_active, year(user_active), month(user_active), day(user_active)')
+        return $this->db->table('users u')
+            ->join('users_detail d', 'd.id_user=u.id_user')
+            ->select('d.user_active, year(user_active) as tahun,month(user_active) as bulan, day(user_active) as day,COUNT(DISTINCT u.full_name, DATE(d.user_active)) as total_login')
+            ->where('u.id_user=d.id_user and d.user_active=', $where)
+            ->groupBy('d.user_active, year(user_active), month(user_active), day(user_active)')
+            ->orderBy('d.user_active, year(user_active), month(user_active), day(user_active)')
             ->get()->getResultArray();
         return $this->findAll();
     }
 
     public function getTotaluserMonth($tahun, $bulan)
     {
-        return $this->db->table('users_detail')
-            ->select('year(user_active) as tahun,month(user_active) as bulan,count(*) as total_login_month')
-            ->where('year(user_active)=', $tahun)
+        return $this->db->table('users u')
+            ->join('users_detail d', 'd.id_user=u.id_user')
+            ->select('d.user_active, year(user_active) as tahun,month(user_active) as bulan, day(user_active) as day,COUNT(DISTINCT u.full_name, DATE(d.user_active)) as total_login_month')
+            ->where('u.id_user=d.id_user and year(user_active)=', $tahun)
             ->where('month(user_active)=', $bulan)
             ->groupBy('year(user_active),month(user_active)')
-            ->orderBy('user_active, year(user_active), month(user_active), day(user_active)')
+            ->orderBy('d.user_active, year(user_active), month(user_active), day(user_active)')
             ->get()->getResultArray();
         return $this->findAll();
     }
 
     public function getAllTotaluserDay()
     {
-        return $this->db->table('users_detail')
-            ->select('user_active,year(user_active) as tahun,month(user_active) as bulan, day(user_active) as day,count(*) as total_login')
-            ->groupBy('user_active,year(user_active),month(user_active),day(user_active)')
-            ->orderBy('user_active,year(user_active),month(user_active), day(user_active)')
+        return $this->db->table('users u')
+            ->join('users_detail d', 'd.id_user=u.id_user')
+            ->select('d.user_active, year(user_active) as tahun,month(user_active) as bulan, day(user_active) as day,COUNT(DISTINCT u.full_name, DATE(d.user_active)) as total_login')
+            ->where('u.id_user=d.id_user')
+            ->groupBy('d.user_active,year(user_active),month(user_active),day(user_active)')
+            ->orderBy('d.user_active,year(user_active),month(user_active), day(user_active)')
             ->get()->getResultArray();
         return $this->findAll();
     }
 
     public function getAllTotaluserMonth()
     {
-        return $this->db->table('users_detail')
-            ->select('year(user_active) as tahun,month(user_active) as bulan,count(*) as total_login_month')
+        return $this->db->table('users u')
+            ->join('users_detail d', 'd.id_user=u.id_user')
+            ->select('year(user_active) as tahun,month(user_active) as bulan,COUNT(DISTINCT u.full_name, DATE(d.user_active)) as total_login_month')
+            ->where('u.id_user=d.id_user')
             ->groupBy('year(user_active),month(user_active)')
             ->orderBy('year(user_active),month(user_active)')
             ->get()->getResultArray();

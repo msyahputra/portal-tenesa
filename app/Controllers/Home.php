@@ -6,6 +6,7 @@ use App\Models\KategoriModel;
 use App\Models\NewsModel;
 use App\Models\EventModel;
 use App\Models\RosterModel;
+use App\Models\AuthModel;
 
 
 class Home extends BaseController
@@ -14,17 +15,23 @@ class Home extends BaseController
 	protected $newsModel;
 	protected $KategoriModel;
 	protected $eventModel;
+	protected $authModel;
 
 	public function __construct()
 	{
 		$this->newsModel = new NewsModel();
 		$this->KategoriModel = new KategoriModel();
 		$this->eventModel = new EventModel();
-				$this->rosterModel = new RosterModel();
+		$this->rosterModel = new RosterModel();
+		$this->authModel = new AuthModel();
 	}
 
 	public function index()
 	{
+		$date_now = DATE('Y-m-d');
+		// if($date_now > ){
+		$data_update = array('status' => 'tidak_online');
+		// $upUser = $this->authModel->UpdateDataUSer($data_update);
 		$news = $this->newsModel->getNews();
 		$newsPopUp = $this->newsModel->getNewsPopup();
 		$event = $this->eventModel->orderBy('id_event', 'DESC')->paginate(9, 'event');
@@ -66,6 +73,7 @@ class Home extends BaseController
 			'newsPopUp' => $newsPopUp,
 			'event' => $event,
 			'roster' => $roster,
+			// 'UpdataUser' => $upUser,
 			// tenesa
 			'job' => $job,
 			'tenesaa' => $Tenesa,
@@ -78,7 +86,7 @@ class Home extends BaseController
 			'telephony' => $telephony,
 			'indihome' => $indihome,
 			'wifiid' => $wifiid,
-			'lain'=> $lain,
+			'lain' => $lain,
 			'datin' => $datin,
 			'imes' => $imes,
 			'fault_handling' => $fault_handling,

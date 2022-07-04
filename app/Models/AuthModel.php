@@ -36,4 +36,14 @@ class AuthModel extends Model
     // {
     //     $this->db->table('users_detail')->update($where, $data);
     // }
+
+
+    public function UpdateDataUSer($data)
+    {
+        $date_now = DATE('Y-m-d');
+        return $this->db->table('users_detail')->where([
+            'user_active' < $date_now,
+            'status' => 'online'
+        ])->groupBy('id', 'DESC')->update($data);
+    }
 }
